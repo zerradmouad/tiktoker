@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { ArrowDownToLine, Link, Loader2, Clipboard, Video, AudioWaveform, Camera, ShieldCheck, UserCheck, Zap, MonitorPlay } from 'lucide-react';
+import { ArrowDownToLine, Link, Loader2, Clipboard, Video, AudioWaveform, Camera, ShieldCheck, UserCheck, Zap, MonitorPlay, Copy, Download } from 'lucide-react';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
@@ -97,6 +97,24 @@ export default function Home() {
       icon: <MonitorPlay className="h-10 w-10 text-primary" />,
       title: "HD Quality",
       text: "Download videos in the highest quality available, preserving the original resolution and clarity.",
+    },
+  ];
+
+  const howItWorksSteps = [
+    {
+      icon: <Copy className="h-10 w-10 text-primary" />,
+      title: "Copy URL",
+      text: "Find the TikTok video you want and copy its URL from the address bar or share menu.",
+    },
+    {
+      icon: <Clipboard className="h-10 w-10 text-primary" />,
+      title: "Paste URL",
+      text: "Paste the copied URL into our downloader input field at the top of this page.",
+    },
+    {
+      icon: <Download className="h-10 w-10 text-primary" />,
+      title: "Download",
+      text: "Click the download button and your video will be saved directly to your device.",
     },
   ];
 
@@ -261,6 +279,26 @@ export default function Home() {
 
       <section className="mt-16 md:mt-24">
         <div className="text-center">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">How It Works</h2>
+          <p className="mt-2 text-lg text-muted-foreground">Download TikTok videos in three simple steps.</p>
+        </div>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {howItWorksSteps.map((step, index) => (
+            <Card key={index} className="bg-card/50 dark:bg-card/20 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <CardContent className="p-6 text-center flex flex-col items-center">
+                <div className="p-3 bg-primary/10 rounded-full mb-4">
+                  {step.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                <p className="text-muted-foreground text-sm">{step.text}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16 md:mt-24">
+        <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Choose Us</h2>
           <p className="mt-2 text-lg text-muted-foreground">Powerful Features</p>
         </div>
@@ -282,3 +320,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
