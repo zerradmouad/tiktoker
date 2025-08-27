@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { ArrowDownToLine, Link, Loader2, Clipboard, Video, AudioWaveform, Camera } from 'lucide-react';
+import { ArrowDownToLine, Link, Loader2, Clipboard, Video, AudioWaveform, Camera, ShieldCheck, UserCheck, Zap, MonitorPlay } from 'lucide-react';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
@@ -76,9 +76,32 @@ export default function Home() {
       });
     }
   };
+  
+  const features = [
+    {
+      icon: <ShieldCheck className="h-10 w-10 text-primary" />,
+      title: "100% Free",
+      text: "No hidden fees, subscriptions, or limits. Download unlimited videos without paying a cent.",
+    },
+    {
+      icon: <UserCheck className="h-10 w-10 text-primary" />,
+      title: "No Registration",
+      text: "Skip the hassle of creating accounts or logging in. Instant access with no personal data required.",
+    },
+    {
+      icon: <Zap className="h-10 w-10 text-primary" />,
+      title: "Lightning Fast",
+      text: "Our optimized servers process your requests instantly, delivering videos in seconds, not minutes.",
+    },
+    {
+      icon: <MonitorPlay className="h-10 w-10 text-primary" />,
+      title: "HD Quality",
+      text: "Download videos in the highest quality available, preserving the original resolution and clarity.",
+    },
+  ];
 
   return (
-    <div className="container mx-auto max-w-2xl px-4 py-8 md:py-16">
+    <div className="container mx-auto max-w-4xl px-4 py-8 md:py-16">
       <section className="text-center">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
           Tiktoker
@@ -88,7 +111,7 @@ export default function Home() {
         </p>
       </section>
 
-      <Card className="mt-8 shadow-lg">
+      <Card className="mt-8 shadow-lg max-w-2xl mx-auto">
         <CardContent className="p-6">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -235,6 +258,27 @@ export default function Home() {
           </CardContent>
         </Card>
       )}
+
+      <section className="mt-16 md:mt-24">
+        <div className="text-center">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Choose Us</h2>
+          <p className="mt-2 text-lg text-muted-foreground">Powerful Features</p>
+        </div>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {features.map((feature, index) => (
+            <Card key={index} className="bg-card/50 dark:bg-card/20 shadow-sm hover:shadow-lg transition-shadow duration-300">
+              <CardContent className="p-6 text-center flex flex-col items-center">
+                <div className="p-3 bg-primary/10 rounded-full mb-4">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm">{feature.text}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
     </div>
   );
 }
