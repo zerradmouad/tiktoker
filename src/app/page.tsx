@@ -34,9 +34,14 @@ const formSchema = z.object({
   url: z.string().url({ message: 'Please enter a valid TikTok URL.' }),
 });
 
+type DownloadStates = {
+  [key: string]: boolean;
+};
+
 export default function Home() {
   const [result, setResult] = useState<TikTokData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [downloading, setDownloading] = useState<DownloadStates>({});
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -45,6 +50,34 @@ export default function Home() {
       url: '',
     },
   });
+  
+  const handleDownload = async (url: string, filename: string) => {
+    setDownloading(prev => ({ ...prev, [filename]: true }));
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+      const blob = await response.blob();
+      const objectUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(objectUrl);
+      document.body.removeChild(a);
+    } catch (error) {
+       console.error('Download error:', error);
+       toast({
+        variant: 'destructive',
+        title: 'Download Failed',
+        description: 'Could not download the file. Please try again.',
+      });
+    } finally {
+      setDownloading(prev => ({ ...prev, [filename]: false }));
+    }
+  };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
@@ -212,63 +245,53 @@ export default function Home() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {result.apiResponse.hdplay && (
-                <Button asChild variant="outline" size="sm" className="h-auto py-2 justify-start">
-                  <a href={result.apiResponse.hdplay} download={`tiktoker_hd_${result.apiResponse.id}.mp4`}>
-                    <Video className="mr-3 h-5 w-5 text-primary" />
-                    <div>
-                      <div className="font-semibold text-sm">Video (HD)</div>
-                      <div className="text-xs text-muted-foreground">{result.apiResponse.hd_size && `${formatBytes(result.apiResponse.hd_size)}`}</div>
-                    </div>
-                    <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />
-                  </a>
+                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.hdplay, `tiktoker_hd_${result.apiResponse.id}.mp4`)} disabled={downloading[`tiktoker_hd_${result.apiResponse.id}.mp4`]}>
+                  {downloading[`tiktoker_hd_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
+                  <div>
+                    <div className="font-semibold text-sm">Video (HD)</div>
+                    <div className="text-xs text-muted-foreground">{result.apiResponse.hd_size && `${formatBytes(result.apiResponse.hd_size)}`}</div>
+                  </div>
+                  {!downloading[`tiktoker_hd_${result.apiResponse.id}.mp4`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
                 </Button>
               )}
               {result.apiResponse.play && (
-                <Button asChild variant="outline" size="sm" className="h-auto py-2 justify-start">
-                  <a href={result.apiResponse.play} download={`tiktoker_nowm_${result.apiResponse.id}.mp4`}>
-                    <Video className="mr-3 h-5 w-5 text-primary" />
-                    <div>
-                      <div className="font-semibold text-sm">Video (No Watermark)</div>
-                      <div className="text-xs text-muted-foreground">{result.apiResponse.size && `${formatBytes(result.apiResponse.size)}`}</div>
-                    </div>
-                     <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />
-                  </a>
+                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.play, `tiktoker_nowm_${result.apiResponse.id}.mp4`)} disabled={downloading[`tiktoker_nowm_${result.apiResponse.id}.mp4`]}>
+                  {downloading[`tiktoker_nowm_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
+                  <div>
+                    <div className="font-semibold text-sm">Video (No Watermark)</div>
+                    <div className="text-xs text-muted-foreground">{result.apiResponse.size && `${formatBytes(result.apiResponse.size)}`}</div>
+                  </div>
+                   {!downloading[`tiktoker_nowm_${result.apiResponse.id}.mp4`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
                 </Button>
               )}
               {result.apiResponse.wmplay && (
-                <Button asChild variant="outline" size="sm" className="h-auto py-2 justify-start">
-                   <a href={result.apiResponse.wmplay} download={`tiktoker_wm_${result.apiResponse.id}.mp4`}>
-                    <Video className="mr-3 h-5 w-5 text-primary" />
-                    <div>
-                      <div className="font-semibold text-sm">Video (Watermark)</div>
-                      <div className="text-xs text-muted-foreground">{result.apiResponse.wm_size && `${formatBytes(result.apiResponse.wm_size)}`}</div>
-                    </div>
-                     <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />
-                  </a>
+                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.wmplay, `tiktoker_wm_${result.apiResponse.id}.mp4`)} disabled={downloading[`tiktoker_wm_${result.apiResponse.id}.mp4`]}>
+                  {downloading[`tiktoker_wm_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
+                  <div>
+                    <div className="font-semibold text-sm">Video (Watermark)</div>
+                    <div className="text-xs text-muted-foreground">{result.apiResponse.wm_size && `${formatBytes(result.apiResponse.wm_size)}`}</div>
+                  </div>
+                   {!downloading[`tiktoker_wm_${result.apiResponse.id}.mp4`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
                 </Button>
               )}
               {result.apiResponse.music && (
-                <Button asChild variant="outline" size="sm" className="h-auto py-2 justify-start">
-                   <a href={result.apiResponse.music} download={`tiktoker_audio_${result.apiResponse.id}.mp3`}>
-                    <AudioWaveform className="mr-3 h-5 w-5 text-primary" />
-                    <div>
-                      <div className="font-semibold text-sm">Audio Only (MP3)</div>
-                      <div className="text-xs text-muted-foreground">Music Track</div>
-                    </div>
-                     <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />
-                  </a>
+                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.music, `tiktoker_audio_${result.apiResponse.id}.mp3`)} disabled={downloading[`tiktoker_audio_${result.apiResponse.id}.mp3`]}>
+                  {downloading[`tiktoker_audio_${result.apiResponse.id}.mp3`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <AudioWaveform className="mr-3 h-5 w-5 text-primary" />}
+                  <div>
+                    <div className="font-semibold text-sm">Audio Only (MP3)</div>
+                    <div className="text-xs text-muted-foreground">Music Track</div>
+                  </div>
+                   {!downloading[`tiktoker_audio_${result.apiResponse.id}.mp3`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
                 </Button>
               )}
               {result.apiResponse.origin_cover && (
-                <Button asChild variant="outline" size="sm" className="h-auto py-2 justify-start">
-                   <a href={result.apiResponse.origin_cover} download={`tiktoker_cover_${result.apiResponse.id}.jpeg`}>
-                    <Camera className="mr-3 h-5 w-5 text-primary" />
-                    <div>
-                      <div className="font-semibold text-sm">Cover Image (JPG)</div>
-                      <div className="text-xs text-muted-foreground">Thumbnail</div>
-                    </div>
-                     <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />
-                  </a>
+                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.origin_cover, `tiktoker_cover_${result.apiResponse.id}.jpeg`)} disabled={downloading[`tiktoker_cover_${result.apiResponse.id}.jpeg`]}>
+                  {downloading[`tiktoker_cover_${result.apiResponse.id}.jpeg`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Camera className="mr-3 h-5 w-5 text-primary" />}
+                  <div>
+                    <div className="font-semibold text-sm">Cover Image (JPG)</div>
+                    <div className="text-xs text-muted-foreground">Thumbnail</div>
+                  </div>
+                   {!downloading[`tiktoker_cover_${result.apiResponse.id}.jpeg`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
                 </Button>
               )}
             </div>
@@ -320,5 +343,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
