@@ -8,7 +8,7 @@ export function Footer() {
           This tool is for personal use only. We are not affiliated with TikTok.
         </p>
         <p className="mt-2 flex items-center justify-center gap-1">
-          Made with <Heart className="w-4 h-4 text-destructive fill-current" /> by a developer.
+          Made with <Heart className="w-4 h-4 text-destructive fill-current" /> by Mouad ZERRAD
         </p>
       </div>
     </footer>
