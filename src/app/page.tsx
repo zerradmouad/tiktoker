@@ -169,64 +169,64 @@ export default function Home() {
               </video>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {result.apiResponse.hdplay && (
-                <Button asChild variant="outline" className="h-auto py-3 justify-start">
+                <Button asChild variant="outline" className="h-auto py-2 justify-start">
                   <a href={result.apiResponse.hdplay} download={`tiktoker_hd_${result.apiResponse.id}.mp4`}>
-                    <Video className="mr-3 h-6 w-6 text-primary" />
+                    <Video className="mr-3 h-5 w-5 text-primary" />
                     <div>
-                      <div className="font-semibold">Video (HD)</div>
+                      <div className="font-semibold text-sm">Video (HD)</div>
                       <div className="text-xs text-muted-foreground">{result.apiResponse.hd_size && `${formatBytes(result.apiResponse.hd_size)}`}</div>
                     </div>
-                    <ArrowDownToLine className="ml-auto h-5 w-5 text-muted-foreground" />
+                    <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />
                   </a>
                 </Button>
               )}
               {result.apiResponse.play && (
-                <Button asChild variant="outline" className="h-auto py-3 justify-start">
+                <Button asChild variant="outline" className="h-auto py-2 justify-start">
                   <a href={result.apiResponse.play} download={`tiktoker_nowm_${result.apiResponse.id}.mp4`}>
-                    <Video className="mr-3 h-6 w-6 text-primary" />
+                    <Video className="mr-3 h-5 w-5 text-primary" />
                     <div>
-                      <div className="font-semibold">Video (No Watermark)</div>
+                      <div className="font-semibold text-sm">Video (No Watermark)</div>
                       <div className="text-xs text-muted-foreground">{result.apiResponse.size && `${formatBytes(result.apiResponse.size)}`}</div>
                     </div>
-                     <ArrowDownToLine className="ml-auto h-5 w-5 text-muted-foreground" />
+                     <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />
                   </a>
                 </Button>
               )}
               {result.apiResponse.wmplay && (
-                <Button asChild variant="outline" className="h-auto py-3 justify-start">
+                <Button asChild variant="outline" className="h-auto py-2 justify-start">
                    <a href={result.apiResponse.wmplay} download={`tiktoker_wm_${result.apiResponse.id}.mp4`}>
-                    <Video className="mr-3 h-6 w-6 text-primary" />
+                    <Video className="mr-3 h-5 w-5 text-primary" />
                     <div>
-                      <div className="font-semibold">Video (Watermark)</div>
+                      <div className="font-semibold text-sm">Video (Watermark)</div>
                       <div className="text-xs text-muted-foreground">{result.apiResponse.wm_size && `${formatBytes(result.apiResponse.wm_size)}`}</div>
                     </div>
-                     <ArrowDownToLine className="ml-auto h-5 w-5 text-muted-foreground" />
+                     <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />
                   </a>
                 </Button>
               )}
               {result.apiResponse.music && (
-                <Button asChild variant="outline" className="h-auto py-3 justify-start">
+                <Button asChild variant="outline" className="h-auto py-2 justify-start">
                    <a href={result.apiResponse.music} download={`tiktoker_audio_${result.apiResponse.id}.mp3`}>
-                    <AudioWaveform className="mr-3 h-6 w-6 text-primary" />
+                    <AudioWaveform className="mr-3 h-5 w-5 text-primary" />
                     <div>
-                      <div className="font-semibold">Audio Only (MP3)</div>
+                      <div className="font-semibold text-sm">Audio Only (MP3)</div>
                       <div className="text-xs text-muted-foreground">Music Track</div>
                     </div>
-                     <ArrowDownToLine className="ml-auto h-5 w-5 text-muted-foreground" />
+                     <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />
                   </a>
                 </Button>
               )}
               {result.apiResponse.origin_cover && (
-                <Button asChild variant="outline" className="h-auto py-3 justify-start">
+                <Button asChild variant="outline" className="h-auto py-2 justify-start">
                    <a href={result.apiResponse.origin_cover} download={`tiktoker_cover_${result.apiResponse.id}.jpeg`}>
-                    <Camera className="mr-3 h-6 w-6 text-primary" />
+                    <Camera className="mr-3 h-5 w-5 text-primary" />
                     <div>
-                      <div className="font-semibold">Cover Image (JPG)</div>
+                      <div className="font-semibold text-sm">Cover Image (JPG)</div>
                       <div className="text-xs text-muted-foreground">Thumbnail</div>
                     </div>
-                     <ArrowDownToLine className="ml-auto h-5 w-5 text-muted-foreground" />
+                     <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />
                   </a>
                 </Button>
               )}
