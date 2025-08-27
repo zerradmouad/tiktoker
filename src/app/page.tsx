@@ -140,7 +140,7 @@ export default function Home() {
       </Card>
 
       {result && (
-        <Card className="mt-8 animate-in fade-in slide-in-from-top-10 duration-500">
+        <Card className="mt-8 animate-in fade-in slide-in-from-top-10 duration-500 max-w-md mx-auto">
           <CardHeader>
              <div className="flex items-center gap-3">
               <Avatar>
@@ -160,7 +160,7 @@ export default function Home() {
               <video
                 controls
                 poster={result.apiResponse.cover}
-                className="w-full aspect-auto bg-black"
+                className="w-full aspect-[9/16] bg-black"
                 preload="metadata"
                 playsInline
               >
@@ -169,9 +169,9 @@ export default function Home() {
               </video>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {result.apiResponse.hdplay && (
-                <Button asChild variant="outline" className="h-auto py-2 justify-start">
+                <Button asChild variant="outline" size="sm" className="h-auto py-2 justify-start">
                   <a href={result.apiResponse.hdplay} download={`tiktoker_hd_${result.apiResponse.id}.mp4`}>
                     <Video className="mr-3 h-5 w-5 text-primary" />
                     <div>
@@ -183,7 +183,7 @@ export default function Home() {
                 </Button>
               )}
               {result.apiResponse.play && (
-                <Button asChild variant="outline" className="h-auto py-2 justify-start">
+                <Button asChild variant="outline" size="sm" className="h-auto py-2 justify-start">
                   <a href={result.apiResponse.play} download={`tiktoker_nowm_${result.apiResponse.id}.mp4`}>
                     <Video className="mr-3 h-5 w-5 text-primary" />
                     <div>
@@ -195,7 +195,7 @@ export default function Home() {
                 </Button>
               )}
               {result.apiResponse.wmplay && (
-                <Button asChild variant="outline" className="h-auto py-2 justify-start">
+                <Button asChild variant="outline" size="sm" className="h-auto py-2 justify-start">
                    <a href={result.apiResponse.wmplay} download={`tiktoker_wm_${result.apiResponse.id}.mp4`}>
                     <Video className="mr-3 h-5 w-5 text-primary" />
                     <div>
@@ -207,7 +207,7 @@ export default function Home() {
                 </Button>
               )}
               {result.apiResponse.music && (
-                <Button asChild variant="outline" className="h-auto py-2 justify-start">
+                <Button asChild variant="outline" size="sm" className="h-auto py-2 justify-start">
                    <a href={result.apiResponse.music} download={`tiktoker_audio_${result.apiResponse.id}.mp3`}>
                     <AudioWaveform className="mr-3 h-5 w-5 text-primary" />
                     <div>
@@ -219,7 +219,7 @@ export default function Home() {
                 </Button>
               )}
               {result.apiResponse.origin_cover && (
-                <Button asChild variant="outline" className="h-auto py-2 justify-start">
+                <Button asChild variant="outline" size="sm" className="h-auto py-2 justify-start">
                    <a href={result.apiResponse.origin_cover} download={`tiktoker_cover_${result.apiResponse.id}.jpeg`}>
                     <Camera className="mr-3 h-5 w-5 text-primary" />
                     <div>
