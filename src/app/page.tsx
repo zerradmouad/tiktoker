@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { ArrowDownToLine, Link, Loader2, Clipboard } from 'lucide-react';
+import { ArrowDownToLine, Link, Loader2, Clipboard, Video, AudioWaveform, Camera } from 'lucide-react';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
@@ -23,12 +23,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useToast } from '@/hooks/use-toast';
 import { getTikTokData } from '@/app/actions';
@@ -175,42 +169,68 @@ export default function Home() {
               </video>
             </div>
             
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className="w-full h-12 text-base font-bold bg-accent text-accent-foreground hover:bg-accent/90">
-                  <ArrowDownToLine className="mr-2 h-5 w-5" />
-                  Download Options
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {result.apiResponse.hdplay && (
+                <Button asChild variant="outline" className="h-auto py-3 justify-start">
+                  <a href={result.apiResponse.hdplay} download={`tiktoker_hd_${result.apiResponse.id}.mp4`}>
+                    <Video className="mr-3 h-6 w-6 text-primary" />
+                    <div>
+                      <div className="font-semibold">Video (HD)</div>
+                      <div className="text-xs text-muted-foreground">{result.apiResponse.hd_size && `${formatBytes(result.apiResponse.hd_size)}`}</div>
+                    </div>
+                    <ArrowDownToLine className="ml-auto h-5 w-5 text-muted-foreground" />
+                  </a>
                 </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[--radix-dropdown-menu-trigger-width]">
-                {result.apiResponse.hdplay && (
-                  <DropdownMenuItem asChild>
-                    <a href={result.apiResponse.hdplay} download={`tiktoker_hd_${result.apiResponse.id}.mp4`}>Video (HD) {result.apiResponse.hd_size && ` - ${formatBytes(result.apiResponse.hd_size)}`}</a>
-                  </DropdownMenuItem>
-                )}
-                {result.apiResponse.play && (
-                  <DropdownMenuItem asChild>
-                     <a href={result.apiResponse.play} download={`tiktoker_nowm_${result.apiResponse.id}.mp4`}>Video (No Watermark) {result.apiResponse.size && ` - ${formatBytes(result.apiResponse.size)}`}</a>
-                  </DropdownMenuItem>
-                )}
-                {result.apiResponse.wmplay && (
-                  <DropdownMenuItem asChild>
-                     <a href={result.apiResponse.wmplay} download={`tiktoker_wm_${result.apiResponse.id}.mp4`}>Video (With Watermark) {result.apiResponse.wm_size && ` - ${formatBytes(result.apiResponse.wm_size)}`}</a>
-                  </DropdownMenuItem>
-                )}
-                 <Separator />
-                {result.apiResponse.music && (
-                  <DropdownMenuItem asChild>
-                     <a href={result.apiResponse.music} download={`tiktoker_audio_${result.apiResponse.id}.mp3`}>Audio Only (MP3)</a>
-                  </DropdownMenuItem>
-                )}
-                {result.apiResponse.origin_cover && (
-                  <DropdownMenuItem asChild>
-                     <a href={result.apiResponse.origin_cover} download={`tiktoker_cover_${result.apiResponse.id}.jpeg`}>Cover Image (JPG)</a>
-                  </DropdownMenuItem>
-                )}
-              </DropdownMenuContent>
-            </DropdownMenu>
+              )}
+              {result.apiResponse.play && (
+                <Button asChild variant="outline" className="h-auto py-3 justify-start">
+                  <a href={result.apiResponse.play} download={`tiktoker_nowm_${result.apiResponse.id}.mp4`}>
+                    <Video className="mr-3 h-6 w-6 text-primary" />
+                    <div>
+                      <div className="font-semibold">Video (No Watermark)</div>
+                      <div className="text-xs text-muted-foreground">{result.apiResponse.size && `${formatBytes(result.apiResponse.size)}`}</div>
+                    </div>
+                     <ArrowDownToLine className="ml-auto h-5 w-5 text-muted-foreground" />
+                  </a>
+                </Button>
+              )}
+              {result.apiResponse.wmplay && (
+                <Button asChild variant="outline" className="h-auto py-3 justify-start">
+                   <a href={result.apiResponse.wmplay} download={`tiktoker_wm_${result.apiResponse.id}.mp4`}>
+                    <Video className="mr-3 h-6 w-6 text-primary" />
+                    <div>
+                      <div className="font-semibold">Video (Watermark)</div>
+                      <div className="text-xs text-muted-foreground">{result.apiResponse.wm_size && `${formatBytes(result.apiResponse.wm_size)}`}</div>
+                    </div>
+                     <ArrowDownToLine className="ml-auto h-5 w-5 text-muted-foreground" />
+                  </a>
+                </Button>
+              )}
+              {result.apiResponse.music && (
+                <Button asChild variant="outline" className="h-auto py-3 justify-start">
+                   <a href={result.apiResponse.music} download={`tiktoker_audio_${result.apiResponse.id}.mp3`}>
+                    <AudioWaveform className="mr-3 h-6 w-6 text-primary" />
+                    <div>
+                      <div className="font-semibold">Audio Only (MP3)</div>
+                      <div className="text-xs text-muted-foreground">Music Track</div>
+                    </div>
+                     <ArrowDownToLine className="ml-auto h-5 w-5 text-muted-foreground" />
+                  </a>
+                </Button>
+              )}
+              {result.apiResponse.origin_cover && (
+                <Button asChild variant="outline" className="h-auto py-3 justify-start">
+                   <a href={result.apiResponse.origin_cover} download={`tiktoker_cover_${result.apiResponse.id}.jpeg`}>
+                    <Camera className="mr-3 h-6 w-6 text-primary" />
+                    <div>
+                      <div className="font-semibold">Cover Image (JPG)</div>
+                      <div className="text-xs text-muted-foreground">Thumbnail</div>
+                    </div>
+                     <ArrowDownToLine className="ml-auto h-5 w-5 text-muted-foreground" />
+                  </a>
+                </Button>
+              )}
+            </div>
 
           </CardContent>
         </Card>
