@@ -9,6 +9,7 @@ export interface TikTokAPIResponse {
     title: string;
     cover: string;
     origin_cover: string;
+    ai_dynamic_cover?: string;
     duration: number;
     play: string;
     wmplay: string;

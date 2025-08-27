@@ -4,15 +4,16 @@ import { refineTitle } from '@/ai/flows/refineTitle';
 import type { TikTokAPIResponse, TikTokData } from '@/lib/types';
 
 export async function getTikTokData(url: string): Promise<TikTokData> {
-  const encodedUrl = encodeURIComponent(url);
-  const apiUrl = `https://tiktok-video-no-watermark2.p.rapidapi.com/?url=${encodedUrl}&hd=1`;
+  const apiUrl = 'https://tiktok-video-no-watermark2.p.rapidapi.com/';
 
   const options = {
-    method: 'GET',
+    method: 'POST',
     headers: {
       'x-rapidapi-key': process.env.RAPIDAPI_KEY || '1f51af29bamshcdc3f45ab7e8355p1b5770jsn3121798065a4',
       'x-rapidapi-host': 'tiktok-video-no-watermark2.p.rapidapi.com',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
+    body: `url=${encodeURIComponent(url)}&hd=1`,
   };
 
   try {
