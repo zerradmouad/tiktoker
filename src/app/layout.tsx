@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 export const metadata: Metadata = {
   title: 'Tiktok Downloader - Download Video TikTok Without Watermark Free',
   description:
-    'Quickly download TikTok videos, photos, and audio without watermarks. Just paste the link and download in various formats and qualities. Free and easy to use.',
+    'TikTok Video Downloader - Tiktoker is a free tool to Download Video TikTok without watermark. Save TikTok videos easily on any device.',
   openGraph: {
     title: 'Tiktok Downloader - Download Video TikTok Without Watermark Free',
     description:
