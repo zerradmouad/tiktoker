@@ -154,9 +154,9 @@ export default function Home() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8 md:py-16">
       <section className="text-center">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
           Tiktoker
-        </h1>
+        </h2>
         <p className="mt-4 text-lg text-muted-foreground">
           Download TikTok videos, photos, and music without watermarks.
         </p>
