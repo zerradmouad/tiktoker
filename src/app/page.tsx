@@ -152,7 +152,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="container mx-auto max-w-4xl px-2 sm:px-4 md:px-6 py-12">
+    <div className="container mx-auto max-w-5xl px-2 sm:px-4 md:px-6 py-8">
       <section className="text-center">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
           SaveTok
@@ -162,7 +162,7 @@ export default function Home() {
         </p>
       </section>
 
-      <Card className="mt-12 shadow-lg max-w-2xl mx-auto">
+      <Card className="mt-8 shadow-lg max-w-2xl mx-auto">
         <CardContent className="p-6">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -214,7 +214,7 @@ export default function Home() {
       </Card>
 
       {result && (
-        <Card className="mt-12 animate-in fade-in slide-in-from-top-10 duration-500 max-w-md mx-auto">
+        <Card className="mt-8 animate-in fade-in slide-in-from-top-10 duration-500 max-w-md mx-auto">
           <CardHeader>
              <div className="flex items-center gap-3">
               <Avatar>
@@ -243,7 +243,7 @@ export default function Home() {
               </video>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {result.apiResponse.hdplay && (
                 <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.hdplay, `savetok_hd_${result.apiResponse.id}.mp4`)} disabled={downloading[`savetok_hd_${result.apiResponse.id}.mp4`]}>
                   {downloading[`savetok_hd_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
