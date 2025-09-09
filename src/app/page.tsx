@@ -152,7 +152,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-8 md:py-12">
+    <div className="container mx-auto max-w-4xl px-2 sm:px-4 md:px-6 py-12">
       <section className="text-center">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
           SaveTok
@@ -162,7 +162,7 @@ export default function Home() {
         </p>
       </section>
 
-      <Card className="mt-8 shadow-lg max-w-2xl mx-auto">
+      <Card className="mt-12 shadow-lg max-w-2xl mx-auto">
         <CardContent className="p-6">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -214,7 +214,7 @@ export default function Home() {
       </Card>
 
       {result && (
-        <Card className="mt-8 animate-in fade-in slide-in-from-top-10 duration-500 max-w-md mx-auto">
+        <Card className="mt-12 animate-in fade-in slide-in-from-top-10 duration-500 max-w-md mx-auto">
           <CardHeader>
              <div className="flex items-center gap-3">
               <Avatar>
@@ -227,7 +227,7 @@ export default function Home() {
               </div>
             </div>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-6">
             <p className="text-sm italic">"{result.refinedTitle}"</p>
             
             <div className="rounded-lg overflow-hidden border">
@@ -243,7 +243,7 @@ export default function Home() {
               </video>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {result.apiResponse.hdplay && (
                 <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.hdplay, `savetok_hd_${result.apiResponse.id}.mp4`)} disabled={downloading[`savetok_hd_${result.apiResponse.id}.mp4`]}>
                   {downloading[`savetok_hd_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
@@ -300,9 +300,9 @@ export default function Home() {
         </Card>
       )}
 
-      <section className="mt-12 md:mt-16">
+      <section className="mt-12">
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">How It Works</h2>
+          <h3 className="text-3xl md:text-4xl font-bold tracking-tight">How It Works</h3>
           <p className="mt-2 text-lg text-muted-foreground">Download TikTok videos in three simple steps.</p>
         </div>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -320,9 +320,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-12 md:mt-16">
+      <section className="mt-12">
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Choose Us</h2>
+          <h3 className="text-3xl md:text-4xl font-bold tracking-tight">Why Choose Us</h3>
           <p className="mt-2 text-lg text-muted-foreground">Powerful Features</p>
         </div>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

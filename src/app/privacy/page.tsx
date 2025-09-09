@@ -1,6 +1,6 @@
 export default function PrivacyPolicyPage() {
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-8 md:py-16">
+    <div className="container mx-auto max-w-4xl px-2 sm:px-4 md:px-6 py-12">
       <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-center">Privacy Policy – SaveTok™</h1>
       <div className="mt-8 prose prose-lg mx-auto dark:prose-invert">
         <p><strong>Last updated:</strong> {new Date().toLocaleDateString()}</p>
