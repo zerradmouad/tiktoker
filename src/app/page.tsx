@@ -313,7 +313,7 @@ export default function Home() {
                   {step.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-muted-foreground text-sm">{step.text}</p>
+                <p className="text-muted-foreground text-sm mt-2">{step.text}</p>
               </CardContent>
             </Card>
           ))}
@@ -333,7 +333,7 @@ export default function Home() {
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm">{feature.text}</p>
+                <p className="text-muted-foreground text-sm mt-2">{feature.text}</p>
               </CardContent>
             </Card>
           ))}
