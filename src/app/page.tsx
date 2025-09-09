@@ -152,7 +152,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-8 md:py-16">
+    <div className="container mx-auto max-w-4xl px-4 py-8 md:py-12">
       <section className="text-center">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
           Tiktoker
@@ -300,7 +300,7 @@ export default function Home() {
         </Card>
       )}
 
-      <section className="mt-16 md:mt-24">
+      <section className="mt-16 md:mt-20">
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">How It Works</h2>
           <p className="mt-2 text-lg text-muted-foreground">Download TikTok videos in three simple steps.</p>
@@ -320,7 +320,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-16 md:mt-24">
+      <section className="mt-16 md:mt-20">
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Choose Us</h2>
           <p className="mt-2 text-lg text-muted-foreground">Powerful Features</p>
@@ -343,3 +343,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
