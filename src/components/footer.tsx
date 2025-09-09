@@ -9,7 +9,7 @@ export function Footer() {
           <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
           <Link href="/terms" className="hover:underline">Terms of Service</Link>
         </div>
-        <p>© Copyright 2025 TikToker - All Rights Reserved.</p>
+        <p>© Copyright 2025 SaveTok - All Rights Reserved.</p>
       </div>
     </footer>
   );

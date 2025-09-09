@@ -7,27 +7,27 @@ import { Footer } from '@/components/footer';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Tiktok Downloader - Download Video TikTok Without Watermark Free',
+  title: 'SaveTok - Download Video TikTok Without Watermark Free',
   description:
-    'TikTok Video Downloader - Tiktoker is a free tool to Download Video TikTok without watermark. Save TikTok videos easily on any device.',
+    'TikTok Video Downloader - SaveTok is a free tool to Download Video TikTok without watermark. Save TikTok videos easily on any device.',
   openGraph: {
-    title: 'Tiktok Downloader - Download Video TikTok Without Watermark Free',
+    title: 'SaveTok - Download Video TikTok Without Watermark Free',
     description:
       'The fastest and easiest way to download TikTok content for personal use.',
     type: 'website',
-    url: 'https://tiktoker.app',
+    url: 'https://savetok.app',
     images: [
       {
         url: 'https://picsum.photos/1200/630?data-ai-hint=social+media+downloader',
         width: 1200,
         height: 630,
-        alt: 'Tiktoker App',
+        alt: 'SaveTok App',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tiktok Downloader - Download Video TikTok Without Watermark Free',
+    title: 'SaveTok - Download Video TikTok Without Watermark Free',
     description:
       'Quickly download TikTok videos, photos, and audio without watermarks.',
     images: ['https://picsum.photos/1200/630?data-ai-hint=social+media+downloader'],

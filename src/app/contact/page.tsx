@@ -7,7 +7,7 @@ export default function ContactPage() {
           We'd love to hear from you! If you have any questions, feedback, or inquiries, please don't hesitate to get in touch with us.
         </p>
         <p>
-          You can reach us by email at: <a href="mailto:support@tiktoker.app">support@tiktoker.app</a>
+          You can reach us by email at: <a href="mailto:support@savetok.app">support@savetok.app</a>
         </p>
         <p>
           We do our best to respond to all inquiries within 24-48 hours.

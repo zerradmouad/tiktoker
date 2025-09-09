@@ -10,7 +10,7 @@ export function Header() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <Film className="h-6 w-6 text-primary" />
-          <h1 className="text-xl font-bold tracking-tight">Tiktoker</h1>
+          <h1 className="text-xl font-bold tracking-tight">SaveTok</h1>
         </Link>
         <ThemeToggle />
       </div>

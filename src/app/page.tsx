@@ -155,7 +155,7 @@ export default function Home() {
     <div className="container mx-auto max-w-4xl px-4 py-8 md:py-12">
       <section className="text-center">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
-          Tiktoker
+          SaveTok
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
           Download TikTok videos, photos, and music without watermarks.
@@ -245,53 +245,53 @@ export default function Home() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {result.apiResponse.hdplay && (
-                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.hdplay, `tiktoker_hd_${result.apiResponse.id}.mp4`)} disabled={downloading[`tiktoker_hd_${result.apiResponse.id}.mp4`]}>
-                  {downloading[`tiktoker_hd_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
+                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.hdplay, `savetok_hd_${result.apiResponse.id}.mp4`)} disabled={downloading[`savetok_hd_${result.apiResponse.id}.mp4`]}>
+                  {downloading[`savetok_hd_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
                   <div>
                     <div className="font-semibold text-sm">Video (HD)</div>
                     <div className="text-xs text-muted-foreground">{result.apiResponse.hd_size && `${formatBytes(result.apiResponse.hd_size)}`}</div>
                   </div>
-                  {!downloading[`tiktoker_hd_${result.apiResponse.id}.mp4`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
+                  {!downloading[`savetok_hd_${result.apiResponse.id}.mp4`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
                 </Button>
               )}
               {result.apiResponse.play && (
-                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.play, `tiktoker_nowm_${result.apiResponse.id}.mp4`)} disabled={downloading[`tiktoker_nowm_${result.apiResponse.id}.mp4`]}>
-                  {downloading[`tiktoker_nowm_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
+                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.play, `savetok_nowm_${result.apiResponse.id}.mp4`)} disabled={downloading[`savetok_nowm_${result.apiResponse.id}.mp4`]}>
+                  {downloading[`savetok_nowm_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
                   <div>
                     <div className="font-semibold text-sm">Video (No Watermark)</div>
                     <div className="text-xs text-muted-foreground">{result.apiResponse.size && `${formatBytes(result.apiResponse.size)}`}</div>
                   </div>
-                   {!downloading[`tiktoker_nowm_${result.apiResponse.id}.mp4`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
+                   {!downloading[`savetok_nowm_${result.apiResponse.id}.mp4`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
                 </Button>
               )}
               {result.apiResponse.wmplay && (
-                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.wmplay, `tiktoker_wm_${result.apiResponse.id}.mp4`)} disabled={downloading[`tiktoker_wm_${result.apiResponse.id}.mp4`]}>
-                  {downloading[`tiktoker_wm_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
+                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.wmplay, `savetok_wm_${result.apiResponse.id}.mp4`)} disabled={downloading[`savetok_wm_${result.apiResponse.id}.mp4`]}>
+                  {downloading[`savetok_wm_${result.apiResponse.id}.mp4`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Video className="mr-3 h-5 w-5 text-primary" />}
                   <div>
                     <div className="font-semibold text-sm">Video (Watermark)</div>
                     <div className="text-xs text-muted-foreground">{result.apiResponse.wm_size && `${formatBytes(result.apiResponse.wm_size)}`}</div>
                   </div>
-                   {!downloading[`tiktoker_wm_${result.apiResponse.id}.mp4`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
+                   {!downloading[`savetok_wm_${result.apiResponse.id}.mp4`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
                 </Button>
               )}
               {result.apiResponse.music && (
-                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.music, `tiktoker_audio_${result.apiResponse.id}.mp3`)} disabled={downloading[`tiktoker_audio_${result.apiResponse.id}.mp3`]}>
-                  {downloading[`tiktoker_audio_${result.apiResponse.id}.mp3`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <AudioWaveform className="mr-3 h-5 w-5 text-primary" />}
+                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.music, `savetok_audio_${result.apiResponse.id}.mp3`)} disabled={downloading[`savetok_audio_${result.apiResponse.id}.mp3`]}>
+                  {downloading[`savetok_audio_${result.apiResponse.id}.mp3`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <AudioWaveform className="mr-3 h-5 w-5 text-primary" />}
                   <div>
                     <div className="font-semibold text-sm">Audio Only (MP3)</div>
                     <div className="text-xs text-muted-foreground">Music Track</div>
                   </div>
-                   {!downloading[`tiktoker_audio_${result.apiResponse.id}.mp3`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
+                   {!downloading[`savetok_audio_${result.apiResponse.id}.mp3`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
                 </Button>
               )}
               {result.apiResponse.origin_cover && (
-                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.origin_cover, `tiktoker_cover_${result.apiResponse.id}.jpeg`)} disabled={downloading[`tiktoker_cover_${result.apiResponse.id}.jpeg`]}>
-                  {downloading[`tiktoker_cover_${result.apiResponse.id}.jpeg`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Camera className="mr-3 h-5 w-5 text-primary" />}
+                <Button variant="outline" size="sm" className="h-auto py-2 justify-start" onClick={() => handleDownload(result.apiResponse.origin_cover, `savetok_cover_${result.apiResponse.id}.jpeg`)} disabled={downloading[`savetok_cover_${result.apiResponse.id}.jpeg`]}>
+                  {downloading[`savetok_cover_${result.apiResponse.id}.jpeg`] ? <Loader2 className="mr-3 h-5 w-5 animate-spin" /> : <Camera className="mr-3 h-5 w-5 text-primary" />}
                   <div>
                     <div className="font-semibold text-sm">Cover Image (JPG)</div>
                     <div className="text-xs text-muted-foreground">Thumbnail</div>
                   </div>
-                   {!downloading[`tiktoker_cover_${result.apiResponse.id}.jpeg`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
+                   {!downloading[`savetok_cover_${result.apiResponse.id}.jpeg`] && <ArrowDownToLine className="ml-auto h-4 w-4 text-muted-foreground" />}
                 </Button>
               )}
             </div>
